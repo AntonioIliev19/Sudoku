@@ -1,0 +1,20 @@
+@if (!config.loading) {
+  <div class="sudoku-table">
+    @for (row of config.board; let rowIndex = $index; track rowIndex) { @for (cell
+      of row; let cellIndex = $index; track cellIndex) {
+      <input
+        class="cell"
+        [ngClass]="{
+      'fixed': config.fixedMask[rowIndex][cellIndex],
+      'selected': config.selection?.row === rowIndex && config.selection?.col === cellIndex
+      }"
+        [value]="cell === 0 ? '' : cell"
+        inputmode="numeric"
+        maxlength="1"
+        [disabled]="config.fixedMask[rowIndex][cellIndex] || config.loading || config.disabled"
+        (input)="onInput($event, rowIndex, cellIndex)"
+        (focus)="cellSelect.emit({ row: rowIndex, col: cellIndex })"
+      />
+    } }
+  </div>
+}

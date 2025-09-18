@@ -1,0 +1,40 @@
+.sudoku-table {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(9, 55px);
+  grid-template-rows: repeat(9, 55px);
+  justify-content: center;
+
+  .cell {
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    font-size: 1.5rem;
+    border: 1px solid #999999;
+    outline: none;
+
+    &.fixed {
+      background-color: #7a7a7a;
+      font-weight: bold;
+      cursor: not-allowed;
+      color: #555555;
+    }
+
+    &.selected {
+      background-color: #e8e8e8;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .sudoku-table {
+    grid-template-columns: repeat(9, 28px);
+    grid-template-rows: repeat(9, 28px);
+  }
+
+  .sudoku-table .cell {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+}

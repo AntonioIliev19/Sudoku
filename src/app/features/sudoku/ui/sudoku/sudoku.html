@@ -1,0 +1,15 @@
+<app-actions
+  [status]="status()"
+  [level]="level()"
+  (solve)="onSolve()"
+  (validate)="onValidate()"
+  (generate)="onNewGame($event)"
+></app-actions>
+
+
+<app-sudoku-table
+  [config]="sudokuConfig()"
+  (cellInput)="onCellInput({ pos: { row: $event.row, col: $event.col }, value: $event.value })"
+  (cellSelect)="onCellSelect($event)"
+  (cellClear)="onCellClear($event)"
+></app-sudoku-table>

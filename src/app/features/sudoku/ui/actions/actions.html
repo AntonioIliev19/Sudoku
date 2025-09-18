@@ -1,0 +1,36 @@
+@if (status === 'loading') {
+<div class="loading">
+  <span class="loader"></span>
+  <span>Loading...</span>
+</div>
+} @else {
+<div class="actions">
+  <div>
+    <div class="dropdown">
+      <button class="btn">Generate</button>
+      <div class="dropdown-btns">
+        <button class="btn level-btn" (click)="generate.emit('easy')">
+          Easy
+        </button>
+        <button class="btn level-btn" (click)="generate.emit('medium')">
+          Medium
+        </button>
+        <button class="btn level-btn" (click)="generate.emit('hard')">
+          Hard
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button class="btn" (click)="solve.emit()">Solve</button>
+  </div>
+  <div>
+    <button class="btn" (click)="validate.emit()">Validate</button>
+  </div>
+</div>
+
+<div class="statuses">
+  <span class="statuses-text">Status: {{ status }} </span>
+  <span class="statuses-text">Level: {{ level }}</span>
+</div>
+}
