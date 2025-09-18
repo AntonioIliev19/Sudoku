@@ -26,7 +26,6 @@ export class GameState {
   applyNewBoard(board: Board, level: Difficulty) {
     this.board.set(board);
     this.fixedMask.set(board.map((row) => row.map((value) => value !== 0)));
-    // this.status.set('playing');
     this.error.set(null);
     this.level.set(level);
     this.loading.set({ generate: false, validate: false, solve: false });

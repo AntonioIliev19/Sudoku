@@ -88,7 +88,7 @@ export class GameFacade {
 
     this.state.setError(null);
     this.state.setLoading('solve', true);
-    this.state.setStatus('playing');
+    this.state.setStatus('loading');
     this.state.setSelection(null);
 
     const board = this.board();
