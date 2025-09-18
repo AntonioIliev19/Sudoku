@@ -20,6 +20,7 @@ export class GameFacade {
   readonly error = this.state.error.asReadonly();
   readonly selection = this.state.selection.asReadonly();
   readonly fixedMask = this.state.fixedMask.asReadonly();
+  readonly level = this.state.level.asReadonly();
 
   newGame(difficulty: Difficulty) {
     if (this.loading().generate) return;
@@ -37,8 +38,8 @@ export class GameFacade {
       )
       .subscribe({
         next: (response: BoardResponse) => {
-          this.state.applyNewBoard(response.board);
-          this.state.setStatus('playing');
+          this.state.applyNewBoard(response.board, difficulty);
+          this.state.setStatus('unsolved');
         },
         error: () => {
           this.state.setStatus('error');
@@ -52,7 +53,7 @@ export class GameFacade {
 
     this.state.setError(null);
     this.state.setLoading('validate', true);
-    this.state.setStatus('playing');
+    this.state.setStatus('loading');
 
     const board = this.board();
 
@@ -68,10 +69,11 @@ export class GameFacade {
             case 'solved':
               this.state.markSolved();
               return;
-            case 'broken':
-              this.state.setStatus('playing');
-              this.state.setError('The board is broken.');
+            case 'unsolved':
+              this.state.setStatus('unsolved');
               return;
+            case 'broken':
+              this.state.setStatus('broken');
           }
         },
         error: () => {
@@ -101,11 +103,11 @@ export class GameFacade {
         next: (response: SolveResponse) => {
           switch (response.status) {
             case 'unsolvable':
-              this.state.setStatus('playing');
+              this.state.setStatus('unsolvable');
               this.state.setError('The board is unsolvable.');
               return;
             case 'solved':
-              this.state.applyNewBoard(response.solution);
+              this.state.applyNewBoard(response.solution, response.difficulty);
               this.state.markSolved();
               return;
           }

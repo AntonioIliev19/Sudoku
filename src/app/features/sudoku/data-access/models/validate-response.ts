@@ -1,3 +1,3 @@
 export interface ValidateResponse {
-  status: 'solved' | 'broken';
+  status: 'solved' | 'unsolved' | 'broken';
 }

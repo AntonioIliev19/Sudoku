@@ -1,7 +1,8 @@
 import { Injectable, signal } from '@angular/core';
 import { Board } from '../models/board';
+import { Status } from '../models/game-status';
+import { Difficulty } from '../models/difficulty';
 
-type Status = 'idle' | 'loading' | 'playing' | 'solved' | 'error';
 type Loading = 'generate' | 'solve' | 'validate';
 
 @Injectable({ providedIn: 'root' })
@@ -20,12 +21,14 @@ export class GameState {
   });
   readonly error = signal<string | null>(null);
   readonly selection = signal<{ row: number; col: number } | null>(null);
+  readonly level = signal<Difficulty>('easy');
 
-  applyNewBoard(board: Board) {
+  applyNewBoard(board: Board, level: Difficulty) {
     this.board.set(board);
     this.fixedMask.set(board.map((row) => row.map((value) => value !== 0)));
-    this.status.set('playing');
+    // this.status.set('playing');
     this.error.set(null);
+    this.level.set(level);
     this.loading.set({ generate: false, validate: false, solve: false });
   }
 
@@ -66,12 +69,6 @@ export class GameState {
 
   setError(message: string | null) {
     this.error.set(message);
-
-    if (message) {
-      this.status.set('error');
-    } else if (this.status() === 'error') {
-      this.status.set('playing');
-    }
   }
 
   markSolved() {
