@@ -1,0 +1,86 @@
+<h2 mat-dialog-title class="title">Information</h2>
+
+<mat-dialog-content class="content">
+  <section class="status-main">
+    <strong>Statuses:</strong>
+    <div class="status-row">
+      <span class="status-dot ok"></span>
+      <div>
+        <div class="status-label">Unsolved</div>
+        <div class="status-help">Your moves so far are valid. Keep going!</div>
+      </div>
+    </div>
+
+    <div class="status-row">
+      <span class="status-dot warning"></span>
+      <div>
+        <div class="status-label">Broken</div>
+        <div class="status-help">
+          There is a conflict on the board. Undo or change one or more numbers,
+          then validate again.
+        </div>
+      </div>
+    </div>
+
+    <div class="status-row">
+      <span class="status-dot error"></span>
+      <div>
+        <div class="status-label">Unsolvable</div>
+        <div class="status-help">
+          The board is unsolvable. Undo or change
+          one or more numbers, then try to use solve again.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <strong>Button Actions:</strong>
+
+  <section class="grid">
+    <div class="card">
+      <div class="card-title">Generate</div>
+      <div class="card-body">
+        Start a new sudoku table. Choose <strong>Easy</strong>,
+        <strong>Medium</strong>, or <strong>Hard</strong> level.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Validate</div>
+      <div class="card-body">
+        Check if your current board is valid so far. If there are any conflicts,
+        the status will change to <strong>Broken</strong>.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Solve</div>
+      <div class="card-body">
+        Automatically solve the current sudoku puzzle. Use this if you get
+        stuck!
+      </div>
+    </div>
+  </section>
+
+  <strong>Meta Information</strong>
+  <section class="meta">
+    <div>
+      <strong>Status</strong> shows wheter your current board is
+      <em>Unsolved</em> or <em>Broken</em>.
+    </div>
+    <div><strong>Level</strong> is the difficulty of the generated sudoku.</div>
+  </section>
+
+  <strong>Tips</strong>
+  <section class="tips">
+    <div class="tip">
+      Validate anytime. It will not show where the mistake is-just whether one
+      exists.
+    </div>
+    <div class="tip">
+      If you see <em>Broken</em>, undo a few moves or try a different path.
+    </div>
+  </section>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

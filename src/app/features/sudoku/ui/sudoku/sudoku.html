@@ -12,3 +12,12 @@
   (cellSelect)="onCellSelect($event)"
   (cellClear)="onCellClear($event)"
 ></app-sudoku-table>
+
+@if (status() !== 'loading') {
+  <div class="info">
+    <button class="btn" (click)="openInformationDialog()">
+      <mat-icon>info</mat-icon>
+      Information
+    </button>
+  </div>
+}

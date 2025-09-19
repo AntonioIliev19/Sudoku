@@ -78,20 +78,6 @@ $blue-color: #3f51b5;
   margin: 2rem auto 0;
 }
 
-.btn {
-  background-color: $blue-color;
-  cursor: pointer;
-  border: 1px solid $blue-color;
-  border-radius: 5px;
-  padding: 10px 15px;
-  color: white;
-
-  &:hover {
-    background-color: #303f9f;
-    border: 1px solid #303f9f;
-  }
-}
-
 .dropdown {
   position: relative;
   display: inline-block;

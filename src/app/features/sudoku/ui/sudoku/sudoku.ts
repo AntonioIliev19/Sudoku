@@ -3,15 +3,19 @@ import { SudokuTable } from '../sudoku-table/sudoku-table';
 import { Actions } from '../actions/actions';
 import { GameFacade } from '../../data-access/facade/game.facade';
 import { Difficulty } from '../../data-access/models/difficulty';
+import { MatDialog } from '@angular/material/dialog';
+import { InformationDialog } from '../dialogs/information-dialog/information-dialog';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-sudoku',
-  imports: [SudokuTable, Actions],
+  imports: [SudokuTable, Actions, MatIcon],
   templateUrl: './sudoku.html',
   styleUrl: './sudoku.scss',
 })
 export class Sudoku implements OnInit {
   private facade = inject(GameFacade);
+  private dialog = inject(MatDialog);
 
   board = this.facade.board;
   status = this.facade.status;
@@ -60,5 +64,12 @@ export class Sudoku implements OnInit {
         this.loading().solve ||
         this.loading().validate,
     };
+  }
+
+  public openInformationDialog() {
+    this.dialog.open(InformationDialog, {
+      width: '520px',
+      autoFocus: false,
+    });
   }
 }
