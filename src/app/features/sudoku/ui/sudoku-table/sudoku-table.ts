@@ -5,12 +5,11 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { NgClass } from '@angular/common';
 import { isInRange } from '../../utils/rules';
 
 @Component({
   selector: 'app-sudoku-table',
-  imports: [NgClass],
+  imports: [],
   templateUrl: './sudoku-table.html',
   styleUrl: './sudoku-table.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

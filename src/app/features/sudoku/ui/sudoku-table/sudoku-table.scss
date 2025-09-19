@@ -13,28 +13,6 @@
     border: 1px solid #999999;
     outline: none;
 
-    &:nth-child(9n + 1) {  // First column
-      border-left: 3px solid #444;
-    }
-    &:nth-child(9n) {  // Last column
-      border-right: 3px solid #444;
-    }
-    &:nth-child(-n + 9) {  // First row
-      border-top: 3px solid #444;
-    }
-    &:nth-child(n + 73) {  // Last row
-      border-bottom: 3px solid #444;
-    }
-
-    // Inner thick borders
-    &:nth-child(3n + 3):not(:nth-child(9n)) {  // Third and sixth columns
-      border-right: 2px solid #444;
-    }
-    &:nth-child(n + 19):nth-child(-n + 27),  // Third row
-    &:nth-child(n + 46):nth-child(-n + 54) { // Sixth row
-      border-bottom: 2px solid #444;
-    }
-
     &.fixed {
       background-color: #d8d8d8;
       font-weight: bold;
@@ -46,6 +24,27 @@
       background-color: #e8e8e8;
     }
   }
+}
+
+.row-2,
+.row-5 {
+  border-bottom: 2px solid #444 !important;
+}
+.col-2,
+.col-5 {
+  border-right: 2px solid #444 !important;
+}
+.col-0 {
+  border-left: 3px solid #444 !important;
+}
+.col-8 {
+  border-right: 3px solid #444 !important;
+}
+.row-0 {
+  border-top: 3px solid #444 !important;
+}
+.row-8 {
+  border-bottom: 3px solid #444 !important;
 }
 
 @media (max-width: 480px) {
