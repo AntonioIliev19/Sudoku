@@ -36,8 +36,8 @@ It lets you generate sudoku table, validate your progress, or instantly solve th
 ### Installation
 ```bash
 # Clone the repo
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/AntonioIliev19/Sudoku.git
+cd Sudoku
 
 # Install dependencies
 npm install
