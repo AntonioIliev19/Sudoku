@@ -19,7 +19,7 @@ It lets you generate sudoku table, validate your progress, or instantly solve th
   Fill the table automatically (use if you’re stuck or want to check the solution).
 
 - **Status & Level display**
-  - **Status** shows whether the current board is *Unsolved*, *Unsolvable* or *Broken*.
+  - **Status** shows whether the current board is _Unsolved_, _Unsolvable_ or _Broken_.
   - **Level** shows the difficulty of the generated sudoku.
 
 - **Helpful info dialog**  
@@ -27,13 +27,22 @@ It lets you generate sudoku table, validate your progress, or instantly solve th
 
 ---
 
+## 🔗 Credits
+
+This project uses the awesome [**Sugoku API**](https://github.com/bertoort/sugoku) created by [**@bertoort**](https://github.com/bertoort) for generating, validating, and solving Sudoku puzzles.  
+Big thanks for making this available to the community! 🙌
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - [Node.js](https://nodejs.org/) (v22+ recommended)
 - [Angular CLI](https://angular.io/cli)
 
 ### Installation
+
 ```bash
 # Clone the repo
 git clone https://github.com/AntonioIliev19/Sudoku.git
