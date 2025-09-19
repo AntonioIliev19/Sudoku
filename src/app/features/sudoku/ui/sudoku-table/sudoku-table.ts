@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { isInRange } from '../../utils/rules';
 
 @Component({
@@ -12,7 +6,6 @@ import { isInRange } from '../../utils/rules';
   imports: [],
   templateUrl: './sudoku-table.html',
   styleUrl: './sudoku-table.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SudokuTable {
   @Input() config!: {
