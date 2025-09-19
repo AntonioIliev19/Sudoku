@@ -1,59 +1,47 @@
-# Sudoku
+# 🧩 Angular Sudoku App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.3.
+An interactive Sudoku game built with **Angular** and **Angular Material**.  
+It lets you generate sudoku table, validate your progress, or instantly solve the board.
 
-## Development server
+---
 
-To start a local development server, run:
+## ✨ Features
 
+- **Generate puzzles**  
+  Choose from three difficulty levels: **Easy**, **Medium**, or **Hard**.
+
+- **Validate progress**
+  - **Unsolved** → Your moves so far are valid. Keep going!
+  - **Unsolvable** → The board is unsolvable. Undo or change one or more numbers, then try to use solve again.
+  - **Broken** → There is a conflict on the board. Undo or change one or more numbers, then validate again.
+
+- **Solve instantly**  
+  Fill the puzzle automatically (use if you’re stuck or want to check the solution).
+
+- **Status & Level display**
+  - **Status** shows whether the current board is *Unsolved*, *Unsolvable* or *Broken*.
+  - **Level** shows the difficulty of the generated puzzle.
+
+- **Helpful info dialog**  
+  A Material Design popup explains how validation works and gives gameplay tips.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v22+ recommended)
+- [Angular CLI](https://angular.io/cli)
+
+### Installation
 ```bash
-ng serve
+# Clone the repo
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
+
+# Install dependencies
+npm install
+
+# Run the app
+npm start
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
