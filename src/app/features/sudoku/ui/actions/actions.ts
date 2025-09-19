@@ -14,6 +14,4 @@ export class Actions {
   @Output() solve = new EventEmitter<void>();
   @Output() generate = new EventEmitter<Difficulty>();
   @Output() validate = new EventEmitter<void>();
-
-  readonly difficulties = ['easy', 'medium', 'hard', 'random'] as const;
 }

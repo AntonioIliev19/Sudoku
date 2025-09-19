@@ -6,7 +6,6 @@
   (generate)="onNewGame($event)"
 ></app-actions>
 
-
 <app-sudoku-table
   [config]="sudokuConfig()"
   (cellInput)="onCellInput({ pos: { row: $event.row, col: $event.col }, value: $event.value })"

@@ -39,6 +39,7 @@ export class SudokuTable {
     const value = parseInt(input, 10);
 
     if (isNaN(value)) {
+      (event.target as HTMLInputElement).value = '';
       this.cellClear.emit({ row, col });
     } else if (isInRange(value)) {
       this.cellInput.emit({ row, col, value });
