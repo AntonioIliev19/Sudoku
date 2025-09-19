@@ -7,7 +7,7 @@ It lets you generate sudoku table, validate your progress, or instantly solve th
 
 ## ✨ Features
 
-- **Generate puzzles**  
+- **Generate sudoku table**  
   Choose from three difficulty levels: **Easy**, **Medium**, or **Hard**.
 
 - **Validate progress**
@@ -16,11 +16,11 @@ It lets you generate sudoku table, validate your progress, or instantly solve th
   - **Broken** → There is a conflict on the board. Undo or change one or more numbers, then validate again.
 
 - **Solve instantly**  
-  Fill the puzzle automatically (use if you’re stuck or want to check the solution).
+  Fill the table automatically (use if you’re stuck or want to check the solution).
 
 - **Status & Level display**
   - **Status** shows whether the current board is *Unsolved*, *Unsolvable* or *Broken*.
-  - **Level** shows the difficulty of the generated puzzle.
+  - **Level** shows the difficulty of the generated sudoku.
 
 - **Helpful info dialog**  
   A Material Design popup explains how validation works and gives gameplay tips.
