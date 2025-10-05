@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { isInRange } from '../../utils/rules';
+import { SudokuCell } from '../sudoku-cell/sudoku-cell';
 
 @Component({
   selector: 'app-sudoku-table',
-  imports: [],
+  imports: [SudokuCell],
   templateUrl: './sudoku-table.html',
   styleUrl: './sudoku-table.scss',
 })
@@ -27,18 +27,19 @@ export class SudokuTable {
     col: number;
   } | null>();
 
-  onInput(event: Event, row: number, col: number) {
-    const input = (event.target as HTMLInputElement).value;
-    const value = parseInt(input, 10);
+  onCellInput(value: number, row: number, col: number) {
+    this.cellInput.emit({ row, col, value });
+  }
 
-    if (isNaN(value)) {
-      (event.target as HTMLInputElement).value = '';
-      this.cellClear.emit({ row, col });
-    } else if (isInRange(value)) {
-      this.cellInput.emit({ row, col, value });
-    } else {
-      (event.target as HTMLInputElement).value = '';
-      this.cellClear.emit({ row, col });
-    }
+  onCellClear(row: number, col: number) {
+    this.cellClear.emit({ row, col });
+  }
+
+  onCellSelect(row: number, col: number) {
+    this.cellSelect.emit({ row, col });
+  }
+
+  onCellBlur() {
+    this.cellSelect.emit(null);
   }
 }

@@ -1,20 +1,20 @@
 @if (!config.loading) {
 <div class="sudoku-table">
-  @for (row of config.board; let rowIndex = $index; track rowIndex) { @for (cell
-  of row; let colIndex = $index; track colIndex) {
-  <input
-    class="cell"
-    [class]="'col-' + colIndex + ' row-' + rowIndex"
-    [class.fixed]="config.fixedMask[rowIndex][colIndex]"
-    [class.selected]="config.selection?.row === rowIndex && config.selection?.col === colIndex"
-    [value]="cell === 0 ? '' : cell"
-    inputmode="numeric"
-    maxlength="1"
-    [disabled]="config.fixedMask[rowIndex][colIndex] || config.loading || config.disabled"
-    (input)="onInput($event, rowIndex, colIndex)"
-    (focus)="cellSelect.emit({ row: rowIndex, col: colIndex })"
-  />
-
-  } }
+  @for (row of config.board; let rowIndex = $index; track rowIndex) {
+    @for (cell of row; let colIndex = $index; track colIndex) {
+      <app-sudoku-cell
+        [value]="cell === 0 ? '' : cell"
+        [fixed]="config.fixedMask[rowIndex][colIndex]"
+        [col]="'col-' + (colIndex)"
+        [row]="'row-' + (rowIndex)"
+        [disabled]="config.fixedMask[rowIndex][colIndex] || config.loading || config.disabled"
+        [selected]="config.selection?.row === rowIndex && config.selection?.col === colIndex"
+        (cellInput)="onCellInput($event, rowIndex, colIndex)"
+        (cellClear)="onCellClear(rowIndex, colIndex)"
+        (cellSelect)="onCellSelect(rowIndex, colIndex)"
+        (cellBlur)="onCellBlur()"
+      ></app-sudoku-cell>
+    }
+  }
 </div>
 }
