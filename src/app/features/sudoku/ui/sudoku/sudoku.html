@@ -1,23 +1,29 @@
-<app-actions
-  [status]="status()"
-  [level]="level()"
-  (solve)="onSolve()"
-  (validate)="onValidate()"
-  (generate)="onNewGame($event)"
-></app-actions>
+@if (status() === GameStatus.Error) {
+  <app-error></app-error>
+} @else if (status() === GameStatus.Loading) {
+  <app-loading-spinner></app-loading-spinner>
+} @else {
+  <app-actions
+    [status]="status()"
+    [level]="level()"
+    (solve)="onSolve()"
+    (validate)="onValidate()"
+    (generate)="onNewGame($event)"
+  ></app-actions>
 
-<app-sudoku-table
-  [config]="sudokuConfig()"
-  (cellInput)="onCellInput({ pos: { row: $event.row, col: $event.col }, value: $event.value })"
-  (cellSelect)="onCellSelect($event)"
-  (cellClear)="onCellClear($event)"
-></app-sudoku-table>
+  <app-sudoku-table
+    [config]="sudokuConfig()"
+    (cellInput)="onCellInput({ pos: { row: $event.row, col: $event.col }, value: $event.value })"
+    (cellSelect)="onCellSelect($event)"
+    (cellClear)="onCellClear($event)"
+  ></app-sudoku-table>
 
-@if (status() !== 'loading') {
-  <div class="info">
-    <button class="btn" (click)="openInformationDialog()">
-      <mat-icon>info</mat-icon>
-      Information
-    </button>
-  </div>
+  @if (status() !== GameStatus.Loading) {
+    <div class="info">
+      <button class="btn" (click)="openInformationDialog()">
+        <mat-icon>info</mat-icon>
+        Information
+      </button>
+    </div>
+  }
 }
