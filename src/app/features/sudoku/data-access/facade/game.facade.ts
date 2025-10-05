@@ -7,6 +7,7 @@ import { Difficulty } from '../models/difficulty';
 import { BoardResponse } from '../models/board-response';
 import { ValidateResponse } from '../models/validate-response';
 import { SolveResponse } from '../models/solve-response';
+import { GameStatus } from '../models/game-status';
 
 @Injectable({ providedIn: 'root' })
 export class GameFacade {
@@ -26,7 +27,7 @@ export class GameFacade {
     if (this.loading().generate) return;
 
     this.state.setError(null);
-    this.state.setStatus('loading');
+    this.state.setStatus(GameStatus.Loading);
     this.state.setLoading('generate', true);
     this.state.setSelection(null);
 
@@ -39,10 +40,10 @@ export class GameFacade {
       .subscribe({
         next: (response: BoardResponse) => {
           this.state.applyNewBoard(response.board, difficulty);
-          this.state.setStatus('unsolved');
+          this.state.setStatus(GameStatus.Unsolved);
         },
         error: () => {
-          this.state.setStatus('error');
+          this.state.setStatus(GameStatus.Error);
           this.state.setError("Couldn't load a board. Please try again.");
         },
       });
@@ -53,7 +54,7 @@ export class GameFacade {
 
     this.state.setError(null);
     this.state.setLoading('validate', true);
-    this.state.setStatus('loading');
+    this.state.setStatus(GameStatus.Loading);
 
     const board = this.board();
 
@@ -66,18 +67,18 @@ export class GameFacade {
       .subscribe({
         next: (response: ValidateResponse) => {
           switch (response.status) {
-            case 'solved':
+            case GameStatus.Solved:
               this.state.markSolved();
               return;
-            case 'unsolved':
-              this.state.setStatus('unsolved');
+            case GameStatus.Unsolved:
+              this.state.setStatus(GameStatus.Unsolved);
               return;
-            case 'broken':
-              this.state.setStatus('broken');
+            case GameStatus.Broken:
+              this.state.setStatus(GameStatus.Broken);
           }
         },
         error: () => {
-          this.state.setStatus('error');
+          this.state.setStatus(GameStatus.Error);
           this.state.setError("Couldn't validate the board. Please try again.");
         },
       });
@@ -88,7 +89,7 @@ export class GameFacade {
 
     this.state.setError(null);
     this.state.setLoading('solve', true);
-    this.state.setStatus('loading');
+    this.state.setStatus(GameStatus.Loading);
     this.state.setSelection(null);
 
     const board = this.board();
@@ -102,18 +103,18 @@ export class GameFacade {
       .subscribe({
         next: (response: SolveResponse) => {
           switch (response.status) {
-            case 'unsolvable':
-              this.state.setStatus('unsolvable');
+            case GameStatus.Unsolvable:
+              this.state.setStatus(GameStatus.Unsolvable);
               this.state.setError('The board is unsolvable.');
               return;
-            case 'solved':
+            case GameStatus.Solved:
               this.state.applyNewBoard(response.solution, response.difficulty);
               this.state.markSolved();
               return;
           }
         },
         error: () => {
-          this.state.setStatus('error');
+          this.state.setStatus(GameStatus.Error);
           this.state.setError("Couldn't solve the board. Please try again.");
         },
       });
