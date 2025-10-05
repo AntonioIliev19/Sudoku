@@ -42,10 +42,6 @@ export class GameFacade {
           this.state.applyNewBoard(response.board, difficulty);
           this.state.setStatus(GameStatus.Unsolved);
         },
-        error: () => {
-          this.state.setStatus(GameStatus.Error);
-          this.state.setError("Couldn't load a board. Please try again.");
-        },
       });
   }
 
@@ -76,10 +72,6 @@ export class GameFacade {
             case GameStatus.Broken:
               this.state.setStatus(GameStatus.Broken);
           }
-        },
-        error: () => {
-          this.state.setStatus(GameStatus.Error);
-          this.state.setError("Couldn't validate the board. Please try again.");
         },
       });
   }
@@ -112,10 +104,6 @@ export class GameFacade {
               this.state.markSolved();
               return;
           }
-        },
-        error: () => {
-          this.state.setStatus(GameStatus.Error);
-          this.state.setError("Couldn't solve the board. Please try again.");
         },
       });
   }
