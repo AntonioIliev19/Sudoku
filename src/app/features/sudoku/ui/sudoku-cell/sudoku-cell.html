@@ -1,0 +1,12 @@
+<input
+  inputmode="numeric"
+  maxlength="1"
+  [class]="'cell ' + col() + ' ' + row()"
+  [value]="value() || ''"
+  [disabled]="disabled()"
+  [class.fixed]="fixed()"
+  [class.selected]="selected()"
+  (input)="onInput($event)"
+  (focus)="onSelect()"
+  (blur)="onBlur()"
+/>
