@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SudokuCell } from './sudoku-cell';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('SudokuCell', () => {
   let component: SudokuCell;
@@ -8,9 +9,9 @@ describe('SudokuCell', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SudokuCell]
-    })
-    .compileComponents();
+      imports: [SudokuCell],
+      providers: [provideZonelessChangeDetection()],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SudokuCell);
     component = fixture.componentInstance;
