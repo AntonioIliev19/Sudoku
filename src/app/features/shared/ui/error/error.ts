@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
@@ -7,4 +7,6 @@ import { MatIcon } from '@angular/material/icon';
   templateUrl: './error.html',
   styleUrl: './error.scss',
 })
-export class Error {}
+export class Error {
+  errorMessage = input<string | null>();
+}

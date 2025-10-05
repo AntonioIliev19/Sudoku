@@ -1,5 +1,5 @@
 @if (status() === GameStatus.Error) {
-  <app-error></app-error>
+  <app-error [errorMessage]="error()"></app-error>
 } @else if (status() === GameStatus.Loading) {
   <app-loading-spinner></app-loading-spinner>
 } @else {
