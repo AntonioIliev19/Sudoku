@@ -26,10 +26,7 @@ export class GameFacade {
   newGame(difficulty: Difficulty) {
     if (this.loading().generate) return;
 
-    this.state.setError(null);
-    this.state.setStatus(GameStatus.Loading);
-    this.state.setLoading('generate', true);
-    this.state.setSelection(null);
+    this.stateSetter({ clearSelection: true, scope: 'generate' });
 
     this.api
       .getBoard(difficulty)
@@ -48,9 +45,7 @@ export class GameFacade {
   validateBoard() {
     if (this.loading().validate) return;
 
-    this.state.setError(null);
-    this.state.setLoading('validate', true);
-    this.state.setStatus(GameStatus.Loading);
+    this.stateSetter({ clearSelection: false, scope: 'validate' });
 
     const board = this.board();
 
@@ -79,10 +74,7 @@ export class GameFacade {
   solveBoard() {
     if (this.loading().solve) return;
 
-    this.state.setError(null);
-    this.state.setLoading('solve', true);
-    this.state.setStatus(GameStatus.Loading);
-    this.state.setSelection(null);
+    this.stateSetter({ clearSelection: true, scope: 'solve' });
 
     const board = this.board();
 
@@ -122,5 +114,18 @@ export class GameFacade {
 
   setSelection(pos: { row: number; col: number } | null) {
     this.state.setSelection(pos);
+  }
+
+  private stateSetter(options: {
+    clearSelection?: boolean;
+    scope: 'generate' | 'solve' | 'validate';
+  }) {
+    this.state.setError(null);
+    this.state.setLoading(options.scope, true);
+    this.state.setStatus(GameStatus.Loading);
+
+    if (options.clearSelection) {
+      this.state.setSelection(null);
+    }
   }
 }
