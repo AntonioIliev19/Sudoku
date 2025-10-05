@@ -59,7 +59,6 @@ export class Sudoku implements OnInit {
   }
 
   private getSudokuConfig() {
-    console.log(this.status());
     return {
       board: this.board(),
       selection: this.selection(),
